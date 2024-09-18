@@ -12,3 +12,11 @@ after_success:
   - docker build -t faiscodingdocker/multi-nginx ./nginx
   - docker build -t faiscodingdocker/multi-server ./server
   - docker build -t faiscodingdocker/multi-worker ./worker
+
+  # Log into docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # take images and push them to docker hub
+  - docker push faiscodingdocker/multi-client
+  - docker push faiscodingdocker/multi-nginx
+  - docker push faiscodingdocker/multi-server
+  - docker push faiscodingdocker/multi-worker
