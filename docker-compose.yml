@@ -2,11 +2,9 @@ version: '3'
 services:
   client:
     image: 'faiscodingdocker/multi-client'
-    mem_limit: 128m
     hostname: client
   server:
     image: 'faiscodingdocker/multi-server'
-    mem_limit: 128m
     hostname: api
     environment:
       - REDIS_HOST=$REDIS_HOST
@@ -18,14 +16,12 @@ services:
       - PGPORT=$PGPORT
   worker:
     image: 'faiscodingdocker/multi-worker'
-    mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
     image: 'faiscodingdocker/multi-nginx'
-    mem_limit: 128m
     hostname: nginx
     ports:
       - '80:80'
