@@ -22,3 +22,15 @@ after_success:
   - docker push faiscodingdocker/multi-nginx
   - docker push faiscodingdocker/multi-server
   - docker push faiscodingdocker/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'ca-central-1'
+  app: 'multi-docker'
+  env: 'Multi-docker-env'
+  bucket_name: 'elasticbeanstalk-ca-central-1-211125713832'
+  bucket_path: 'docker-multi'
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
