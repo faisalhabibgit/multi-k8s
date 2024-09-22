@@ -3,10 +3,10 @@ docker build -t faiscodingdocker/multi-server:latest -t faiscodingdocker/multi-s
 docker build -t faiscodingdocker/multi-worker:latest -t faiscodingdocker/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 docker push faiscodingdocker/multi-client:latest
 docker push faiscodingdocker/multi-server:latest
-docker push faiscodingdocker/multiworker:latest
+docker push faiscodingdocker/multi-worker:latest
 docker push faiscodingdocker/multi-client:$SHA
 docker push faiscodingdocker/multi-server:$SHA
-docker push faiscodingdocker/multiworker:$SHA
+docker push faiscodingdocker/multi-worker:$SHA
 kubectl apply -f k8s
 kubectl set image deployments/server-deployment server=faiscodingdocker/multi-server:$SHA
 kubectl set image deployments/client-deployment client=faiscodingdocker/multi-client:$SHA
